@@ -4,6 +4,7 @@ var superagent = require('superagent')
   , cheerio = require('cheerio')
   , eventproxy = require('eventproxy')
   , url = require('url')
+  , fs = require('fs')
   , config = require('./config');
 
 function loadChannel() {
@@ -22,16 +23,13 @@ function loadChannel() {
             var pageUrl = channelUrl + '&page=' + i + '&per-page=' + totalPage;
             pageUrls.push(pageUrl);
         }
-//console.log(pageUrls);
+
         var ep = eventproxy();
 
         ep.after('load_channel', pageUrls.length, function(pages) {
             var channels = [];
             pages.forEach(function(page) {
-                var pageUrl = page[0];
-                var sIndex = pageUrl.indexOf('&page=') + 6;
-                var eIndex = pageUrl.indexOf('&per');
-                var pageNum = Number(pageUrl.substring(sIndex, eIndex));
+                var pageNum = page[0];
                 var pageHtml = page[1];
                 var pageChannel = [];
                 var $ = cheerio.load(pageHtml);
@@ -73,11 +71,21 @@ function loadChannel() {
                 if (err) {
                     return console.log(err);
                 }
-                ep.emit('load_channel', [pageUrl, res.text]);
+                var sIndex = pageUrl.indexOf('&page=') + 6;
+                var eIndex = pageUrl.indexOf('&per');
+                var pageNum = Number(pageUrl.substring(sIndex, eIndex));
+                ep.emit('load_channel', [pageNum, res.text]);
             });
         });
 
     });
+}
+
+function downloadImage(url) {
+    var imgName = url.substring(url.lastIndexOf('/'));
+    var stream = fs.createWriteStream('static/img/' + imgName);
+    var req = superagent.get(url);
+    req.pipe(stream);
 }
 
 exports.loadChannel = loadChannel;

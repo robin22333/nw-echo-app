@@ -1,5 +1,28 @@
 'use strict'
 
+/**
+ *┌──────────┐
+ *| ■      ■ |
+ *|   bug    |
+ *|   stop   |
+ *|   here   |
+ *|          |
+ *|  巴  千  |
+ *|  格  行  |
+ *|  不  代  |
+ *|  沾  码  |
+ *|  身  过  |
+ *|          |
+ *|  →   ←   |
+ *|    ＾    | 
+ *└──────────┘
+ *
+ * @description node-wekit echo app
+ * @version 1.0.0
+ * @author luob
+ * @update 2015-11-09
+ */
+
 var express = require('express')
   , superagent = require('superagent')
   , cheerio = require('cheerio')
