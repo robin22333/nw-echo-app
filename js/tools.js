@@ -90,10 +90,11 @@ function loadChannel() {
                 }
                 return 0;
             });
-            fs.writeFile(path.join(config.jsonPath, "channel.json"),JSON.stringify(channels), function(err) {
+            fs.writeFile(path.join(config.jsonPath, 'channel.json'),JSON.stringify(channels), function(err) {
                 if (err) {
-                    return console.log(err);
+                    return logger.log(err);
                 }
+                logger.log('channel.json write ok');
             });
         });
 
