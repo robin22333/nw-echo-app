@@ -1,0 +1,38 @@
+body {
+  color: #555;
+  background: #ebebeb;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+#toolbar {
+  height: 20px;
+  background: #ddd;
+  -wekit-app-region: drag;
+}
+
+#container {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.channel-list {
+  margin 0 -10px;
+}
+
+.channel-list li {
+  float:left;
+  margin-top: 20px;
+  padding: 0 10px;
+  width: 25%;
+}
+
+.channel-cover-wp {
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+}
