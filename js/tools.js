@@ -17,7 +17,7 @@
  *|    ＾    | 
  *└──────────┘
  *
- * @description node-wekit echo app
+ * @description node-webkit echo app
  * @version 1.0.0
  * @author luob
  * @update 2015-11-09
