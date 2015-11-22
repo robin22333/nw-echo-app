@@ -27,20 +27,25 @@ var express = require('express')
   , superagent = require('superagent')
   , cheerio = require('cheerio')
   , fs = require('fs')
+  , path = require('path')
+  , config = require('./config')
   , tools = require('./tools');
 
 var app = express();
 
 app.get('/', function(req, res) {
-    var stream = fs.createWriteStream('static/img/1.jpeg');
-    var req = superagent.get('http://kibey-echo.b0.upaiyun.com/poster/2015/02/05/979d49a81f1d2953.jpeg');
-    req.pipe(stream);
-
+    tools.loadChannel();
+    res.send('load success');
 });
 
 app.get('/test', function(req, res) {
-    tools.loadChannel();
-    res.send('加载成功');
+    fs.readFile(path.join(config.jsonPath, 'channel.json'), {encoding:'UTF-8',flag:'r'}, function(err, data) {
+        console.log('aaa');
+        if (err) {
+            return console.log(err);
+        }
+        res.send(data);
+    });
 });
 
 app.listen(3000, function(req, res) {
