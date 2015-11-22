@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>APlayer Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/APlayer.css">
+  <style>
+    .container {
+      max-width: 32rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="player" class="aplayer">
+      s<div style="padding: 10px; font-size: 10px; text-align: center;">(＞﹏＜) APlayer 加载中,好累的说...</div>
+    </div>
+  </div>
+  <script src="js/APlayer.js"></script>
+  <script>
+    var ap = new APlayer({
+      element: document.getElementById('player'),
+      narrow: false,
+      autoplay: true,
+      music: {
+        title: 'Preparation',
+        author: 'Hans Zimmer/Richard Harvey',
+        url: 'http://7s1s0t.com2.z0.glb.qiniucdn.com/1771862045.mp3',
+        pic: 'http://echo-mx.b0.upaiyun.com/1771862045.jpg'
+      }
+    });
+    ap.init();
+  </script>
+</body>
+</html>
